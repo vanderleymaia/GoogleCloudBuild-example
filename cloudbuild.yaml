@@ -6,11 +6,11 @@ steps:
   args: ['composer','install'] 
   # args: ['exec', 'app', 'composer','install'] 
 - name: Copy .env.example
-  args: ['copy('.env.example', '.env')']
+  args: ['cp', '.env.example', '.env']
   # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-# - name: 'Generate Key'
-#   args: ['php','artisan','key:generate']
-# - name: 'Migrations'
-#   args: ['php','artisan','migrate']
-# - name: 'php-fpm'
-#   args: ['php-fpm']
+- name: 'Generate Key'
+  args: ['php','artisan','key:generate']
+- name: 'Migrations'
+  args: ['php','artisan','migrate']
+- name: 'php-fpm'
+  args: ['php-fpm']
