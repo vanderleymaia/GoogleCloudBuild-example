@@ -5,8 +5,8 @@ steps:
 - name: 'composer'
   args: ['composer','install'] 
   # args: ['exec', 'app', 'composer','install'] 
-- name: 'cp'
-  args: ['cp','.env.example','.env']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['COPY','.env.example','.env']
   # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 - name: 'php'
   args: ['php','artisan','key:generate']
