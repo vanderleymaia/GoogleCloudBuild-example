@@ -1,21 +1,20 @@
 steps:
 # running docker-compose
+#STEP 1
 - name: 'docker/compose:1.26.2'
   args: ['up', '-d']
-#   #STEP 2
-# - name: 'docker'
-#   args: ['exec', 'app', 'composer','install']
+#STEP 2
 - name: 'composer'
-  args: ['composer','install'] 
-  # args: ['exec', 'app', 'composer','install'] 
-# - name: 'ubuntu'
-#   args: ['cp','.env.example','.env']
-- name: 'docker'
-  args: ['exec', 'bash', 'cp','.env.example','.env']
-  # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+args: ['composer','install'] 
+#STEP 3
+- name: 'ubuntu'
+args: ['cp','.env.example','.env']
+#STEP 3
 - name: 'php:7.3.6-fpm-alpine3.9'
-  args: ['php','artisan','key:generate']
-- name: 'php:7.3.6-fpm-alpine3.9'
-  args: ['php','artisan','migrate']
+args: ['php','artisan','key:generate']
+#STEP 4
+# - name: 'php:7.3.6-fpm-alpine3.9'
+#   args: ['php','artisan','migrate']
+#STEP 5
 - name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php-fpm']
