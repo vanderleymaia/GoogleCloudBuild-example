@@ -8,7 +8,7 @@ steps:
 - name: 'cp'
   args: ['cp','.env.example','.env']
   # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-- name: 'Generate Key'
+- name: 'php'
   args: ['php','artisan','key:generate']
 - name: 'Migrations'
   args: ['php','artisan','migrate']
