@@ -2,8 +2,11 @@ steps:
 # running docker-compose
 - name: 'docker/compose:1.26.2'
   args: ['up', '-d']
-- name: 'composer'
-  args: ['composer','install'] 
+#   #STEP 2
+- name: 'docker'
+  args: ['exec', 'app', 'composer','install']
+# - name: 'composer'
+#   args: ['composer','install'] 
   # args: ['exec', 'app', 'composer','install'] 
 - name: 'ubuntu'
   args: ['cp','.env.example','.env']
