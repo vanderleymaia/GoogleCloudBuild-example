@@ -2,3 +2,13 @@ steps:
 # running docker-compose
 - name: 'docker/compose:1.26.2'
   args: ['up', '-d']
+- name: 'composer'
+  args: ['exec', 'app', 'composer','install'] 
+- name: Copy .env
+  run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+- name: 'Generate Key'
+  args: ['php','artisan','key:generate']
+- name: 'Migrations'
+  args: ['php','artisan','migrate']
+- name: 'php-fpm'
+  args: ['php-fpm']
