@@ -8,9 +8,9 @@ steps:
 - name: 'ubuntu'
   args: ['cp','.env.example','.env']
   # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-- name: 'php'
+- name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php','artisan','key:generate']
-- name: 'php'
+- name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php','artisan','migrate']
-- name: 'php'
+- name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php-fpm']
