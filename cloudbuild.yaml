@@ -13,8 +13,8 @@ steps:
 - name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php','artisan','key:generate']
 #STEP 4
-- name: 'php:7.3.6-fpm-alpine3.9'
-  args: ['sudo','php','artisan','migrate']
+- name: 'svendocker/php-mysql'
+  args: ['php','artisan','migrate']
 #STEP 5
 - name: 'php:7.3.6-fpm-alpine3.9'
   args: ['php-fpm']
