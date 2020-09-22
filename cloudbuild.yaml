@@ -10,7 +10,7 @@ steps:
   # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 - name: 'php'
   args: ['php','artisan','key:generate']
-- name: 'Migrations'
+- name: 'php'
   args: ['php','artisan','migrate']
-- name: 'php-fpm'
+- name: 'php'
   args: ['php-fpm']
