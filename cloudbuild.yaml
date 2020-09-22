@@ -5,8 +5,9 @@ steps:
 - name: 'composer'
   args: ['composer','install'] 
   # args: ['exec', 'app', 'composer','install'] 
-- name: Copy .env
-  run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+- name: Copy .env.example
+  args: ['copy('.env.example', '.env')']
+  # run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 # - name: 'Generate Key'
 #   args: ['php','artisan','key:generate']
 # - name: 'Migrations'
