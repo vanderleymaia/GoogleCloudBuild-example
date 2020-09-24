@@ -2,7 +2,7 @@ steps:
 # running docker-compose
 #STEP 1
 - name: 'docker'
-args: ['exec','-t','app','composer','install']
+  args: ['composer', 'up', '-d']
 # - name: 'docker/compose:1.26.2'
 #   args: ['up', '-d']
 # #STEP 2
