@@ -1,24 +1,28 @@
 steps:
 # running docker-compose
 #STEP 1
-- name: 'docker/compose:1.26.2'
+- id: "Realizando composer up"
+  name: 'docker/compose:1.26.2'
   args: ['up', '-d']
+
 #STEP 2
 - id: "Rodando composer"
   name: 'docker/compose:1.26.2'
   args: ['exec','-d','app','composer','install']
+
+#STEP 3
+- id: "Copiando o .env.example para .env"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-d','app', 'cp','.env.example','.env']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','app','bash', 'cp','.env.example','.env']
+  args: ['exec','-d','app','php','artisan','key:generate']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','app','php','artisan','key:generate']
+  args: ['exec','-d','php','artisan','migrate']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','php','artisan','migrate']
-#STEP 3
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','php-fpm']
+  args: ['exec','-d','php-fpm']
 
 
 
