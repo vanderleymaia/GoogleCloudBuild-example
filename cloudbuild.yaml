@@ -6,7 +6,7 @@ steps:
 #STEP 2
 - id: "Rodando composer"
   name: 'docker/compose:1.26.2'
-  args: ['exec','-t','app','composer','install']
+  args: ['exec','-d','app','composer','install']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','app','bash', 'cp','.env.example','.env']
