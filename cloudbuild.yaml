@@ -4,8 +4,7 @@ steps:
 - name: 'docker/compose:1.26.2'
   args: ['up', '-d']
 #STEP 2
-- id: "Rodando composer"
-name: 'docker'
+- name: 'docker'
 args: ['exec','-t','app','composer','install']
 
 # #STEP 2
