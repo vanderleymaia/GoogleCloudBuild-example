@@ -1,28 +1,31 @@
 steps:
 # running docker-compose
 #STEP 1
-- id: "Realizando composer up"
+- id: "Step 01 - Realizando composer up"
   name: 'docker/compose:1.26.2'
   args: ['up', '-d']
 
 #STEP 2
-- id: "Rodando composer"
+- id: "Step 02 - Rodando composer"
   name: 'docker/compose:1.26.2'
   args: ['exec','-d','app','composer','install']
 
 #STEP 3
-- id: "Copiando o .env.example para .env"
+- id: "Step 03 - Copiando o .env.example para .env"
   name: 'gcr.io/cloud-builders/docker'
   args: ['exec','-d','app', 'cp','.env.example','.env']
-#STEP 3
-- name: 'gcr.io/cloud-builders/docker'
+#STEP 4
+- id: "Step 04 - Key Generate"
+  name: 'gcr.io/cloud-builders/docker'
   args: ['exec','-d','app','php','artisan','key:generate']
-#STEP 3
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-d','php','artisan','migrate']
-#STEP 3
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-d','php-fpm']
+#STEP 5
+- id: "Step 05 - Artisan Migrate"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-d','app', 'php','artisan','migrate']
+#STEP 6
+- id: "Step 06 - PHP-FPM"
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-d','app','php-fpm']
 
 
 
