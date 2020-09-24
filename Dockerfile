@@ -15,14 +15,14 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 RUN chown -R www-data:www-data /var/www
 
-# RUN composer install && \
-#             cp .env.example .env && \
-#             php artisan key:generate && \
-#             php artisan migrate && \
-#             php artisan config:cache
+RUN composer install && \
+            cp .env.example .env && \
+            php artisan key:generate && \
+            php artisan migrate && \
+            php artisan config:cache
 
 # Copiar tudo que está na raiz para /var/www (como estamos usando WORDIR /var/www poderíamos simplesmente usar COPY . .
-# COPY . /var/www
+COPY . /var/www
 
 
 
@@ -32,5 +32,5 @@ RUN usermod -u 1000 www-data
 USER www-data
 
 EXPOSE 9000
-# ENTRYPOINT [ "php-fpm" ]
+ENTRYPOINT [ "php-fpm" ]
 
