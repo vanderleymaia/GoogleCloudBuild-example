@@ -8,10 +8,10 @@ steps:
   args: ['exec','-t','app','composer','install']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['exec', 'bash', 'cp','.env.example','.env']
+  args: ['exec','-t','app','bash', 'cp','.env.example','.env']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['exec','-t','php','artisan','key:generate']
+  args: ['exec','-t','app','php','artisan','key:generate']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','php','artisan','migrate']
