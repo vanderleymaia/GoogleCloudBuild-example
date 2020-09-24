@@ -6,6 +6,21 @@ steps:
 #STEP 2
 - name: 'docker'
   args: ['exec','-t','app','composer','install']
+#STEP 3
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['exec', 'bash', 'cp','.env.example','.env']
+#STEP 3
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-t','php','artisan','key:generate']
+#STEP 3
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-t','php','artisan','migrate']
+#STEP 3
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['exec','-t','php-fpm']
+
+
+
 
 # #STEP 2
 # - name: 'composer'
