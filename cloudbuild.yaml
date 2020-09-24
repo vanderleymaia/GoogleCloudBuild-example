@@ -1,8 +1,8 @@
 steps:
 # running docker-compose
 #STEP 1
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['composer', 'up', '-d']
+- name: 'docker'
+  args: ['compose', 'up', '-d']
 # - name: 'docker/compose:1.26.2'
 #   args: ['up', '-d']
 # #STEP 2
