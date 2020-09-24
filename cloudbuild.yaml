@@ -1,8 +1,10 @@
 steps:
 # running docker-compose
 #STEP 1
-- name: 'docker/compose:1.26.2'
-  args: ['up', '-d']
+- name: 'docker' ou gcr.io/cloud-builders/docker
+args: ['exec','-t','app','composer','install']
+# - name: 'docker/compose:1.26.2'
+#   args: ['up', '-d']
 # #STEP 2
 # - name: 'composer'
 #   args: ['composer','install'] 
