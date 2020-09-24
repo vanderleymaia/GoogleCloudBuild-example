@@ -5,7 +5,7 @@ steps:
   args: ['up', '-d']
 #STEP 2
 - name: 'docker'
-args: ['exec','-t','app','composer','install']
+  args: ['exec','-t','app','composer','install']
 
 # #STEP 2
 # - name: 'composer'
