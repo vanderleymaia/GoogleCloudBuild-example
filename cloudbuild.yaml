@@ -4,7 +4,7 @@ steps:
 - name: 'docker/compose:1.26.2'
   args: ['up', '-d']
 #STEP 2
-- name: 'docker'
+- name: 'gcr.io/cloud-builders/docker'
   args: ['exec','-t','app','composer','install']
 #STEP 3
 - name: 'gcr.io/cloud-builders/docker'
